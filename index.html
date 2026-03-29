@@ -1,442 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NeuroSonix</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #000000;
-      --panel: rgba(255,255,255,0.04);
-      --panel-strong: rgba(255,255,255,0.06);
-      --border: rgba(255,255,255,0.10);
-      --text: #ffffff;
-      --muted: rgba(255,255,255,0.72);
-      --soft: rgba(255,255,255,0.50);
-      --accent: #def962;
-      --accent-bg: rgba(222,249,98,0.12);
-      --accent-border: rgba(222,249,98,0.35);
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NeuroSonix</title>
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Poppins, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    a, button {
-      font: inherit;
-    }
+<style>
 
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(10px);
-      background: rgba(0,0,0,0.86);
-      border-bottom: 1px solid var(--border);
-    }
+:root {
+--bg:#000;
+--text:#fff;
+--muted:rgba(255,255,255,.68);
+--soft:rgba(255,255,255,.5);
+--border:rgba(255,255,255,.1);
+--panel:rgba(255,255,255,.04);
+--accent:#def962;
+--accent-bg:rgba(222,249,98,.12);
+--accent-border:rgba(222,249,98,.35);
+}
 
-    .container {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+*{box-sizing:border-box}
 
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 24px;
-      min-height: 72px;
-    }
+body{
+margin:0;
+font-family:Poppins,system-ui,-apple-system;
+background:var(--bg);
+color:var(--text);
+}
 
-    .brand-title {
-      font-size: clamp(2.4rem, 5vw, 3.8rem);
-      font-weight: 400;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
+.container{
+max-width:1180px;
+margin:auto;
+padding:0 24px;
+}
 
-    .brand-subtitle {
-      display: none;
-    }
+.site-header{
+border-bottom:1px solid var(--border);
+}
 
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      flex-wrap: wrap;
-    }
+.header-inner{
+display:flex;
+justify-content:flex-end;
+align-items:center;
+height:70px;
+}
 
-    .nav button {
-      background: transparent;
-      color: var(--soft);
-      border: 0;
-      cursor: pointer;
-      padding: 0;
-      transition: color 0.2s ease;
-      font-weight: 400;
-    }
+.nav{
+display:flex;
+gap:28px;
+}
 
-    .nav button:hover,
-    .nav button.active {
-      color: var(--text);
-    }
+.nav button{
+background:none;
+border:0;
+color:var(--soft);
+font-weight:400;
+cursor:pointer;
+}
 
-    main {
-      min-height: calc(100vh - 72px);
-    }
+.nav button.active,
+.nav button:hover{
+color:#fff;
+}
 
-    .brand-block {
-      padding: 22px 0 8px;
-    }
+.page{
+display:none;
+padding:80px 0;
+}
 
-    .page {
-      display: none;
-      padding: 72px 0 84px;
-    }
+.page.active{
+display:block;
+}
 
-    .page.active {
-      display: block;
-    }
+.brand-title{
+font-size:clamp(2.5rem,5vw,3.8rem);
+letter-spacing:.22em;
+font-weight:400;
+text-transform:uppercase;
+margin-bottom:18px;
+}
 
-    .grid-hero {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 40px;
-      align-items: start;
-    }
+.pill{
+display:inline-block;
+padding:8px 14px;
+border-radius:999px;
+border:1px solid var(--accent-border);
+background:var(--accent-bg);
+color:var(--accent);
+font-size:13px;
+margin-bottom:24px;
+}
 
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--accent-border);
-      background: var(--accent-bg);
-      color: var(--accent);
-      font-size: 0.92rem;
-      margin-bottom: 18px;
-    }
+h1{
+font-weight:400;
+font-size:clamp(2.6rem,5vw,4.2rem);
+letter-spacing:-.02em;
+line-height:1.1;
+margin:0;
+}
 
-    h1 {
-      font-size: clamp(2.6rem, 5vw, 4.4rem);
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-      margin: 0;
-      max-width: 780px;
-      font-weight: 500;
-    }
+h2{
+font-weight:400;
+font-size:2.2rem;
+}
 
-    h2 {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      line-height: 1.08;
-      letter-spacing: -0.03em;
-      margin: 0;
-      font-weight: 500;
-    }
+h3{
+font-weight:500;
+}
 
-    h3 {
-      font-size: 1.25rem;
-      margin: 0 0 12px;
-      font-weight: 500;
-    }
+.lead{
+color:var(--muted);
+max-width:720px;
+margin-top:20px;
+line-height:1.6;
+}
 
-    .eyebrow {
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--soft);
-      margin-bottom: 14px;
-    }
+.button-row{
+margin-top:30px;
+display:flex;
+gap:14px;
+}
 
-    .lead,
-    .body-copy,
-    li {
-      font-size: 1.06rem;
-      color: var(--muted);
-      font-weight: 400;
-    }
+.btn{
+padding:14px 22px;
+border-radius:18px;
+text-decoration:none;
+cursor:pointer;
+font-weight:500;
+}
 
-    .lead {
-      font-size: 1.15rem;
-      max-width: 760px;
-      margin-top: 24px;
-      font-weight: 400;
-    }
+.btn-primary{
+background:#fff;
+color:#000;
+}
 
-    .button-row {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
+.btn-secondary{
+border:1px solid rgba(255,255,255,.2);
+}
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 20px;
-      border-radius: 18px;
-      text-decoration: none;
-      cursor: pointer;
-      border: 1px solid transparent;
-      transition: all 0.2s ease;
-    }
+.card{
+background:var(--panel);
+padding:28px;
+border-radius:28px;
+border:1px solid var(--border);
+}
 
-    .btn-primary {
-      background: #ffffff;
-      color: #000000;
-      font-weight: 600;
-    }
+.grid-3{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:24px;
+margin-top:40px;
+}
 
-    .btn-secondary {
-      background: transparent;
-      color: #ffffff;
-      border-color: rgba(255,255,255,0.18);
-    }
+.grid-2{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:24px;
+margin-top:40px;
+}
 
-    .btn-secondary:hover { background: rgba(255,255,255,0.05); }
-    .btn-primary:hover { opacity: 0.92; }
+.footer{
+border-top:1px solid var(--border);
+padding:60px 0;
+margin-top:80px;
+text-align:center;
+}
 
-    .card,
-    .panel {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 28px;
-    }
+.footer-brand{
+letter-spacing:.22em;
+font-size:13px;
+}
 
-    .card {
-      padding: 28px;
-    }
+.footer-copy{
+opacity:.4;
+margin-top:10px;
+font-size:12px;
+}
 
-    .panel {
-      padding: 34px;
-    }
+@media(max-width:900px){
+.grid-3,.grid-2{
+grid-template-columns:1fr;
+}
+}
 
-    .section-space {
-      margin-top: 44px;
-    }
-
-    .split-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 28px;
-      align-items: stretch;
-    }
-
-    .three-up,
-    .two-up {
-      display: grid;
-      gap: 22px;
-      margin-top: 42px;
-    }
-
-    .three-up { grid-template-columns: repeat(3, 1fr); }
-    .two-up { grid-template-columns: repeat(2, 1fr); }
-
-    .list {
-      padding-left: 18px;
-      margin: 14px 0 0;
-    }
-
-    .list li + li { margin-top: 10px; }
-
-    .tight li + li { margin-top: 12px; }
-
-    .opportunity-copy {
-      max-width: 900px;
-    }
-
-    .footer-note {
-      margin-top: 48px;
-      color: var(--soft);
-      font-size: 0.92rem;
-    }
-
-    @media (max-width: 920px) {
-      .grid-hero,
-      .split-grid,
-      .three-up,
-      .two-up {
-        grid-template-columns: 1fr;
-      }
-
-      .nav {
-        gap: 16px;
-      }
-
-      .header-inner {
-        justify-content: flex-start;
-        min-height: auto;
-        padding: 18px 0;
-      }
-
-      .brand-title {
-        font-size: 2rem;
-        letter-spacing: 0.14em;
-        margin-top: 12px;
-      }
-
-      .page {
-        padding-top: 42px;
-      }
-    }
-  </style>
+</style>
 </head>
+
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <nav class="nav" aria-label="Primary navigation">
-        <button class="nav-link active" data-page="home">Home</button>
-        <button class="nav-link" data-page="technology">Technology</button>
-        <button class="nav-link" data-page="markets">Markets</button>
-        <button class="nav-link" data-page="advantage">Advantage</button>
-        <button class="nav-link" data-page="contact">Contact</button>
-      </nav>
-    </div>
-  </header>
 
-  
-    <div class="brand-subtitle">Brain-Inspired AI for Intelligent Audio</div>
-  </div>
+<header class="site-header">
+<div class="container header-inner">
+<nav class="nav">
+<button class="nav-link active" data-page="home">Home</button>
+<button class="nav-link" data-page="technology">Technology</button>
+<button class="nav-link" data-page="markets">Markets</button>
+<button class="nav-link" data-page="advantage">Advantage</button>
+<button class="nav-link" data-page="contact">Contact</button>
+</nav>
+</div>
+</header>
 
-  <main>
-    <section id="home" class="page active">
-      <div class="container">
-        <div class="grid-hero">
-          <div>
-            <div class="brand-title">NeuroSonix</div>
-            <div class="pill">Brain Inspired AI for Intelligent Audio</div>
-            <h1>Enabling devices to focus on the sound that matters.</h1>
-            <p class="lead">NeuroSonix develops brain-inspired AI. Our patent-protected core technology allows machines to focus on a specific sound within complex, noisy environments. Our NeuroAI algorithm enables hardware manufacturers to isolate and track voices in real time, unlocking a new generation of intelligent audio across hearing devices, consumer electronics, and AI platforms.</p>
-            <div class="button-row">
-              <button class="btn btn-primary nav-link" data-page="contact">Contact Us</button>
-              <button class="btn btn-secondary nav-link" data-page="technology">Explore Technology</button>
-            </div>
-          </div>
-        </div>
+<main>
 
-        
-    </section>
+<section id="home" class="page active">
+<div class="container">
 
-    <section id="technology" class="page">
-      <div class="container">
-        <div class="eyebrow">The solution</div>
-        <h2>NeuroSonix enables machines to isolate and track a target speaker in real time.</h2>
-        <p class="lead">Our algorithm is designed for practical deployment in hardware environments where latency, power efficiency, and device constraints matter.</p>
+<div class="brand-title">NeuroSonix</div>
+<div class="pill">Brain Inspired AI for Intelligent Audio</div>
 
-        <div class="three-up">
-          <div class="card">
-            <h3>Two-microphone operation</h3>
-            <p class="body-copy">Operates with only two microphones, reducing the need for larger and more complex microphone arrays.</p>
-          </div>
-          <div class="card">
-            <h3>Preserves spatial cues</h3>
-            <p class="body-copy">Maintains spatial audio information so devices can retain realistic auditory context while isolating target sound sources.</p>
-          </div>
-          <div class="card">
-            <h3>Real-time DSP deployment</h3>
-            <p class="body-copy">Enables real-time applications on DSP hardware without cloud dependency or repeated model retraining.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+<h1>Enabling devices to focus on the sound that matters.</h1>
 
-    <section id="markets" class="page">
-      <div class="container">
-        <div class="eyebrow">The opportunity</div>
-        <h2>Commercial applications across high-value audio categories</h2>
-        <p class="lead">NeuroSonix is designed for categories where speech clarity, sound prioritization, and low-latency deployment have immediate commercial value.</p>
+<p class="lead">
+NeuroSonix develops brain-inspired AI. Our patent-protected core technology allows machines to focus on a specific sound within complex, noisy environments. Our NeuroAI algorithm enables hardware manufacturers to isolate and track voices in real time, unlocking a new generation of intelligent audio across hearing devices, consumer electronics, and AI platforms.
+</p>
 
-        <div class="two-up">
-          <div class="card">
-            <h3>Target markets</h3>
-            <ul class="list tight">
-              <li>Hearing devices and assistive listening</li>
-              <li>Consumer audio and earbuds</li>
-              <li>ASR and voice-enabled platforms</li>
-              <li>Surveillance and intelligent sensing</li>
-              <li>AI/chip platforms</li>
-              <li>Next-generation audio intelligence applications</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Why these categories</h3>
-            <p class="body-copy">Each of these markets faces the same fundamental challenge: machines can detect sound, but they struggle to focus on the right source in complex environments. NeuroSonix is designed to solve that bottleneck at the intelligence layer.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="advantage" class="page">
-      <div class="container">
-        <div class="eyebrow">Key differentiators</div>
-        <h2>A differentiated approach to selective listening</h2>
-        <p class="lead">NeuroSonix combines scientific originality with practical deployment potential, making it relevant to both technical partners and investors.</p>
-
-        <div class="three-up">
-          <div class="card">
-            <h3>Structural cost advantage</h3>
-            <p class="body-copy">Performance without additional microphone count reduces hardware complexity and bill of materials.</p>
-          </div>
-          <div class="card">
-            <h3>Proprietary AI architecture</h3>
-            <p class="body-copy">Patent-protected, brain-inspired algorithm for sound segregation and selective listening.</p>
-          </div>
-          <div class="card">
-            <h3>Edge optimized efficiency</h3>
-            <p class="body-copy">Designed for low-power DSP deployment without cloud dependency or model retraining.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="page">
-      <div class="container">
-        <div class="panel" style="text-align:center; max-width: 900px; margin: 0 auto;">
-          <div class="eyebrow">Contact</div>
-          <h2>Get in touch</h2>
-          <p class="lead" style="margin-left:auto;margin-right:auto;">NeuroSonix is interested in conversations with OEMs, semiconductor partners, hearing technology companies, audio platform leaders, and investors aligned with applied NeuroAI.</p>
-          <div class="button-row" style="justify-content:center;">
-            <a class="btn btn-primary" href="mailto:info@neurosonix.ai">info@neurosonix.ai</a>
-          </div>
-          <div class="footer-note">© 2026 NeuroSonix</div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <script>
-    const navLinks = document.querySelectorAll('.nav-link');
-    const pages = document.querySelectorAll('.page');
-
-    function showPage(pageId) {
-      pages.forEach((page) => {
-        page.classList.toggle('active', page.id === pageId);
-      });
-
-      navLinks.forEach((link) => {
-        link.classList.toggle('active', link.dataset.page === pageId);
-      });
-
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    navLinks.forEach((link) => {
-      link.addEventListener('click', () => {
-        showPage(link.dataset.page);
-      });
-    });
-  </script>
-</body>
-</html>
+<div class="button-row">
+<button class="btn btn-primary nav-link" data-page="contact">Contact</button>
+<button class="btn btn-secondary nav-link" data-page="technology">Explore Technology<
