@@ -1,147 +1,260 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>NeuroSonix</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+import React, { useState } from "react";
 
-<style>
-body {
-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-background-color: #0b0f14;
-color: white;
-margin: 0;
+export default function NeuroSonixSite() {
+  const pages = {
+    home: {
+      label: "Home",
+      title: "Enabling devices to focus on the sound that matters.",
+    },
+    technology: {
+      label: "Technology",
+      title: "Brain-inspired algorithms for complex listening environments",
+    },
+    markets: {
+      label: "Markets",
+      title: "Commercial applications across high-value audio categories",
+    },
+    advantage: {
+      label: "Advantage",
+      title: "A differentiated approach to selective listening",
+    },
+    contact: {
+      label: "Contact",
+      title: "Get in touch",
+    },
+  };
+
+  const [activePage, setActivePage] = useState("home");
+
+  const navItemClass = (key) =>
+    `cursor-pointer transition ${
+      activePage === key ? "text-white" : "text-white/70 hover:text-white"
+    }`;
+
+  return (
+    <div className="min-h-screen bg-black text-white">
+      <header className="border-b border-white/10">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
+          <div>
+            <div className="text-2xl font-semibold tracking-wide">NeuroSonix</div>
+            <div className="text-sm text-white/60">Brain-Inspired AI for Intelligent Audio</div>
+          </div>
+          <nav className="hidden gap-8 text-sm md:flex">
+            <button onClick={() => setActivePage("home")} className={navItemClass("home")}>
+              Home
+            </button>
+            <button onClick={() => setActivePage("technology")} className={navItemClass("technology")}>
+              Technology
+            </button>
+            <button onClick={() => setActivePage("markets")} className={navItemClass("markets")}>
+              Markets
+            </button>
+            <button onClick={() => setActivePage("advantage")} className={navItemClass("advantage")}>
+              Advantage
+            </button>
+            <button onClick={() => setActivePage("contact")} className={navItemClass("contact")}>
+              Contact
+            </button>
+          </nav>
+        </div>
+      </header>
+
+      {activePage === "home" && (
+        <>
+          <section className="mx-auto grid max-w-7xl gap-12 px-6 py-20 lg:grid-cols-2 lg:px-8 lg:py-28">
+            <div>
+              <div
+                className="mb-4 inline-flex rounded-full border px-3 py-1 text-sm"
+                style={{
+                  borderColor: "rgba(222, 249, 98, 0.35)",
+                  backgroundColor: "rgba(222, 249, 98, 0.12)",
+                  color: "#def962",
+                }}
+              >
+                NeuroAI for hearing in noise
+              </div>
+              <h1 className="max-w-3xl text-5xl font-semibold leading-tight tracking-tight sm:text-6xl">
+                {pages.home.title}
+              </h1>
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
+                NeuroSonix translates auditory neuroscience into low-latency, edge-deployable audio intelligence. Our brain-inspired algorithms help devices isolate speech and priority sounds in noisy, real-world environments.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <button
+                  onClick={() => setActivePage("contact")}
+                  className="rounded-2xl bg-white px-5 py-3 text-sm font-medium text-black transition hover:opacity-90"
+                >
+                  Contact Us
+                </button>
+                <button
+                  onClick={() => setActivePage("technology")}
+                  className="rounded-2xl border border-white/20 px-5 py-3 text-sm font-medium text-white transition hover:bg-white/5"
+                >
+                  Explore Technology
+                </button>
+              </div>
+            </div>
+
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+              <div className="text-sm uppercase tracking-[0.2em] text-white/50">Why now</div>
+              <div className="mt-4 text-2xl font-semibold">
+                Machines can hear everything, but still struggle to understand what matters in noise.
+              </div>
+              <div className="mt-6 space-y-4 text-white/70">
+                <p>
+                  Voice interfaces, hearing technologies, spatial audio, enterprise communications, robotics, and AI devices all need better auditory scene understanding in real-world conditions.
+                </p>
+                <p>
+                  NeuroSonix is building the intelligence layer for selective listening: technology inspired by how the human auditory system solves the cocktail party problem.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section className="mx-auto max-w-7xl px-6 pb-8 lg:px-8 lg:pb-12">
+            <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 lg:p-10">
+              <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+                <div>
+                  <div className="text-sm uppercase tracking-[0.2em] text-white/50">For partners and investors</div>
+                  <h2 className="mt-3 text-3xl font-semibold sm:text-4xl">
+                    A credible first presence for a science-driven company
+                  </h2>
+                  <p className="mt-4 max-w-3xl text-lg leading-8 text-white/70">
+                    NeuroSonix is positioned as a licensable intelligence layer for the next generation of hearing technology, consumer audio, spatial computing, and AI-enabled devices.
+                  </p>
+                </div>
+                <div className="rounded-3xl border border-white/10 bg-black/40 p-6">
+                  <div className="text-sm text-white/50">Explore</div>
+                  <div className="mt-4 space-y-3 text-white/80">
+                    <button onClick={() => setActivePage("technology")} className="block text-left transition hover:text-white">
+                      Technology overview
+                    </button>
+                    <button onClick={() => setActivePage("markets")} className="block text-left transition hover:text-white">
+                      Target markets
+                    </button>
+                    <button onClick={() => setActivePage("advantage")} className="block text-left transition hover:text-white">
+                      Strategic advantage
+                    </button>
+                    <button onClick={() => setActivePage("contact")} className="block text-left transition hover:text-white">
+                      Contact NeuroSonix
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </>
+      )}
+
+      {activePage === "technology" && (
+        <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
+          <div className="max-w-3xl">
+            <div className="text-sm uppercase tracking-[0.2em] text-white/50">Technology</div>
+            <h1 className="mt-3 text-4xl font-semibold sm:text-5xl">{pages.technology.title}</h1>
+            <p className="mt-6 text-lg leading-8 text-white/70">
+              Inspired by human auditory attention and spatial hearing, NeuroSonix algorithms are designed to separate, prioritize, and enhance target sound sources in dynamic acoustic scenes.
+            </p>
+          </div>
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+              <h3 className="text-xl font-semibold">Selective listening</h3>
+              <p className="mt-3 text-white/70">
+                Improve focus on the speaker or sound source that matters most in crowded or noisy environments.
+              </p>
+            </div>
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+              <h3 className="text-xl font-semibold">Embedded deployment</h3>
+              <p className="mt-3 text-white/70">
+                Architected for low-power DSP and edge hardware where latency, compute, and battery constraints matter.
+              </p>
+            </div>
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+              <h3 className="text-xl font-semibold">Platform value</h3>
+              <p className="mt-3 text-white/70">
+                A licensable audio intelligence layer for hearing tech, earbuds, spatial computing, conferencing, and AI-enabled devices.
+              </p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {activePage === "markets" && (
+        <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
+          <div className="max-w-3xl">
+            <div className="text-sm uppercase tracking-[0.2em] text-white/50">Markets</div>
+            <h1 className="mt-3 text-4xl font-semibold sm:text-5xl">{pages.markets.title}</h1>
+            <p className="mt-6 text-lg leading-8 text-white/70">
+              NeuroSonix is designed for categories where speech clarity, sound prioritization, and low-latency deployment have immediate commercial value.
+            </p>
+          </div>
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+              <div className="text-sm uppercase tracking-[0.2em] text-white/50">Target markets</div>
+              <ul className="mt-5 space-y-3 text-white/75">
+                <li>Hearing aids and assistive listening</li>
+                <li>Earbuds and consumer audio</li>
+                <li>AR/VR and spatial computing</li>
+                <li>Enterprise conferencing and collaboration</li>
+                <li>Robotics, defense, and intelligent sensing</li>
+                <li>Semiconductor and AI platform partnerships</li>
+              </ul>
+            </div>
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+              <div className="text-sm uppercase tracking-[0.2em] text-white/50">Why these markets</div>
+              <p className="mt-5 text-white/70">
+                Each of these segments faces the same core challenge: extracting the right sound from complex environments without sacrificing latency, power efficiency, or user experience.
+              </p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {activePage === "advantage" && (
+        <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
+          <div className="max-w-3xl">
+            <div className="text-sm uppercase tracking-[0.2em] text-white/50">Advantage</div>
+            <h1 className="mt-3 text-4xl font-semibold sm:text-5xl">{pages.advantage.title}</h1>
+            <p className="mt-6 text-lg leading-8 text-white/70">
+              NeuroSonix combines scientific originality with practical deployment potential, making it relevant to both technical partners and investors.
+            </p>
+          </div>
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+              <div className="text-sm uppercase tracking-[0.2em] text-white/50">Strategic advantage</div>
+              <ul className="mt-5 space-y-3 text-white/75">
+                <li>Neuroscience-originated approach to the cocktail party problem</li>
+                <li>Designed for real-world noise, not only lab-clean audio</li>
+                <li>Low-latency and low-power edge potential</li>
+                <li>Multiple licensing and partnership pathways</li>
+                <li>Strong fit with the next generation of voice-first and audio-first devices</li>
+              </ul>
+            </div>
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+              <div className="text-sm uppercase tracking-[0.2em] text-white/50">Company positioning</div>
+              <p className="mt-5 text-white/70">
+                Rather than building a single end-user product, NeuroSonix is positioned as an enabling intelligence layer that can integrate across multiple device categories and platform ecosystems.
+              </p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {activePage === "contact" && (
+        <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 text-center">
+            <div className="text-sm uppercase tracking-[0.2em] text-white/50">Contact</div>
+            <h1 className="mt-3 text-4xl font-semibold sm:text-5xl">{pages.contact.title}</h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/70">
+              NeuroSonix is interested in conversations with OEMs, semiconductor partners, hearing technology companies, spatial audio leaders, and investors aligned with applied neuroAI.
+            </p>
+            <div className="mt-8">
+              <a href="mailto:info@neurosonix.ai" className="rounded-2xl bg-white px-6 py-3 text-sm font-medium text-black transition hover:opacity-90">
+                info@neurosonix.ai
+              </a>
+            </div>
+          </div>
+        </section>
+      )}
+    </div>
+  );
 }
-
-.container {
-max-width: 1000px;
-margin: auto;
-padding: 60px 20px;
-}
-
-h1 {
-font-size: 48px;
-margin-bottom: 10px;
-}
-
-h2 {
-margin-top: 60px;
-font-size: 28px;
-}
-
-p {
-color: #c9d1d9;
-line-height: 1.6;
-font-size: 18px;
-}
-
-.hero {
-padding-top: 80px;
-padding-bottom: 80px;
-}
-
-.button {
-display: inline-block;
-margin-top: 25px;
-padding: 14px 28px;
-background: white;
-color: black;
-text-decoration: none;
-border-radius: 6px;
-font-weight: 600;
-}
-
-.section {
-margin-top: 60px;
-}
-
-.footer {
-margin-top: 100px;
-color: #8b949e;
-font-size: 14px;
-}
-</style>
-
-</head>
-
-<body>
-
-<div class="container hero">
-
-<h1>NeuroSonix</h1>
-
-<p><strong>Brain-Inspired AI for Intelligent Audio</strong></p>
-
-<p>
-NeuroSonix develops brain-inspired algorithms that enable devices to selectively hear speech and important sounds in complex, noisy environments — just like the human auditory system.
-</p>
-
-<a class="button" href="mailto:info@neurosonix.ai">
-Contact
-</a>
-
-</div>
-
-
-<div class="container section">
-
-<h2>The Problem</h2>
-
-<p>
-Machines can hear everything, but struggle to understand what matters in noisy, real-world environments. Voice interfaces, hearing technologies, robotics, and AI systems all face the same challenge: distinguishing signal from noise.
-</p>
-
-</div>
-
-
-<div class="container section">
-
-<h2>The Solution</h2>
-
-<p>
-NeuroSonix translates auditory neuroscience into low-latency, edge-deployable audio intelligence. Our algorithms are designed to isolate, prioritize, and enhance important sounds in real time.
-</p>
-
-</div>
-
-
-<div class="container section">
-
-<h2>Target Markets</h2>
-
-<p>
-• Hearing technology  
-• Earbuds & consumer audio  
-• AR/VR & spatial computing  
-• Enterprise conferencing  
-• Robotics & intelligent sensing  
-• AI & semiconductor platforms
-</p>
-
-</div>
-
-
-<div class="container section">
-
-<h2>Strategic Advantage</h2>
-
-<p>
-• Brain-inspired architecture  
-• Real-time performance potential  
-• Low-power edge deployment  
-• Licensable technology model  
-• Broad cross-industry applicability
-</p>
-
-</div>
-
-
-<div class="container footer">
-
-© 2026 NeuroSonix  
-neurosonix.ai
-
-</div>
-
-
-</body>
-</html>
