@@ -5,219 +5,389 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>NeuroSonix</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
 <style>
-
-:root {
---bg:#000;
---text:#fff;
---muted:rgba(255,255,255,.68);
---soft:rgba(255,255,255,.5);
---border:rgba(255,255,255,.1);
---panel:rgba(255,255,255,.04);
---accent:#def962;
---accent-bg:rgba(222,249,98,.12);
---accent-border:rgba(222,249,98,.35);
+:root{
+  --bg:#000000;
+  --text:#ffffff;
+  --muted:rgba(255,255,255,.66);
+  --soft:rgba(255,255,255,.46);
+  --border:rgba(255,255,255,.10);
+  --panel:rgba(255,255,255,.04);
+  --accent:#def962;
+  --accent-bg:rgba(222,249,98,.12);
+  --accent-border:rgba(222,249,98,.35);
 }
 
 *{box-sizing:border-box}
 
-body{
-margin:0;
-font-family:Poppins,system-ui,-apple-system;
-background:var(--bg);
-color:var(--text);
+html,body{
+  margin:0;
+  padding:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
 }
 
 .container{
-max-width:1180px;
-margin:auto;
-padding:0 24px;
+  max-width:1180px;
+  margin:0 auto;
+  padding:0 28px;
 }
 
 .site-header{
-border-bottom:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  background:#000;
 }
 
 .header-inner{
-display:flex;
-justify-content:flex-end;
-align-items:center;
-height:70px;
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  min-height:72px;
 }
 
 .nav{
-display:flex;
-gap:28px;
+  display:flex;
+  gap:30px;
+  flex-wrap:wrap;
 }
 
 .nav button{
-background:none;
-border:0;
-color:var(--soft);
-font-weight:400;
-cursor:pointer;
+  appearance:none;
+  background:none;
+  border:0;
+  color:var(--soft);
+  cursor:pointer;
+  font-size:14px;
+  font-weight:400;
+  letter-spacing:.01em;
+  padding:0;
 }
 
-.nav button.active,
-.nav button:hover{
-color:#fff;
+.nav button:hover,
+.nav button.active{
+  color:var(--text);
 }
 
 .page{
-display:none;
-padding:80px 0;
+  display:none;
+  padding:84px 0 88px;
 }
 
 .page.active{
-display:block;
+  display:block;
 }
 
 .brand-title{
-font-size:clamp(2.5rem,5vw,3.8rem);
-letter-spacing:.22em;
-font-weight:400;
-text-transform:uppercase;
-margin-bottom:18px;
+  font-size:clamp(2.4rem,5vw,3.6rem);
+  line-height:1;
+  letter-spacing:.24em;
+  font-weight:300;
+  text-transform:uppercase;
+  margin:0 0 18px 0;
 }
 
 .pill{
-display:inline-block;
-padding:8px 14px;
-border-radius:999px;
-border:1px solid var(--accent-border);
-background:var(--accent-bg);
-color:var(--accent);
-font-size:13px;
-margin-bottom:24px;
+  display:inline-flex;
+  align-items:center;
+  padding:8px 14px;
+  border-radius:999px;
+  border:1px solid var(--accent-border);
+  background:var(--accent-bg);
+  color:var(--accent);
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:.02em;
+  margin-bottom:26px;
 }
 
 h1{
-font-weight:400;
-font-size:clamp(2.6rem,5vw,4.2rem);
-letter-spacing:-.02em;
-line-height:1.1;
-margin:0;
+  margin:0;
+  max-width:780px;
+  font-size:clamp(2.5rem,5vw,4.05rem);
+  line-height:1.08;
+  letter-spacing:-.025em;
+  font-weight:300;
 }
 
 h2{
-font-weight:400;
-font-size:2.2rem;
+  margin:0;
+  font-size:clamp(1.9rem,4vw,2.7rem);
+  line-height:1.12;
+  letter-spacing:-.02em;
+  font-weight:300;
+  max-width:900px;
 }
 
 h3{
-font-weight:500;
+  margin:0 0 10px 0;
+  font-size:1.08rem;
+  line-height:1.3;
+  font-weight:400;
+}
+
+p,
+li{
+  color:var(--muted);
+  font-size:1rem;
+  line-height:1.7;
+  font-weight:400;
 }
 
 .lead{
-color:var(--muted);
-max-width:720px;
-margin-top:20px;
-line-height:1.6;
+  max-width:760px;
+  margin-top:22px;
+  font-size:1.05rem;
+  line-height:1.75;
+  color:var(--muted);
+  font-weight:400;
 }
 
 .button-row{
-margin-top:30px;
-display:flex;
-gap:14px;
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:32px;
 }
 
 .btn{
-padding:14px 22px;
-border-radius:18px;
-text-decoration:none;
-cursor:pointer;
-font-weight:500;
+  appearance:none;
+  border-radius:18px;
+  padding:14px 22px;
+  text-decoration:none;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:500;
+  transition:all .18s ease;
 }
 
 .btn-primary{
-background:#fff;
-color:#000;
+  background:#fff;
+  color:#000;
+  border:1px solid #fff;
+}
+
+.btn-primary:hover{
+  opacity:.92;
 }
 
 .btn-secondary{
-border:1px solid rgba(255,255,255,.2);
+  background:transparent;
+  color:#fff;
+  border:1px solid rgba(255,255,255,.18);
 }
 
-.card{
-background:var(--panel);
-padding:28px;
-border-radius:28px;
-border:1px solid var(--border);
+.btn-secondary:hover{
+  background:rgba(255,255,255,.04);
 }
 
 .grid-3{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:24px;
-margin-top:40px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+  margin-top:42px;
 }
 
 .grid-2{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:24px;
-margin-top:40px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:24px;
+  margin-top:42px;
+}
+
+.card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:28px;
+  padding:28px;
+}
+
+ul{
+  margin:0;
+  padding-left:18px;
+}
+
+li+li{
+  margin-top:10px;
 }
 
 .footer{
-border-top:1px solid var(--border);
-padding:60px 0;
-margin-top:80px;
-text-align:center;
+  border-top:1px solid var(--border);
+  margin-top:72px;
+  padding:56px 0;
+  text-align:center;
 }
 
 .footer-brand{
-letter-spacing:.22em;
-font-size:13px;
+  font-size:12px;
+  font-weight:400;
+  letter-spacing:.24em;
+  opacity:.88;
 }
 
 .footer-copy{
-opacity:.4;
-margin-top:10px;
-font-size:12px;
+  margin-top:10px;
+  font-size:12px;
+  color:var(--soft);
 }
 
-@media(max-width:900px){
-.grid-3,.grid-2{
-grid-template-columns:1fr;
-}
-}
+@media (max-width:900px){
+  .grid-3,
+  .grid-2{
+    grid-template-columns:1fr;
+  }
 
+  .nav{
+    gap:16px;
+  }
+
+  .page{
+    padding:56px 0 68px;
+  }
+
+  .brand-title{
+    letter-spacing:.16em;
+  }
+}
 </style>
 </head>
-
 <body>
 
 <header class="site-header">
-<div class="container header-inner">
-<nav class="nav">
-<button class="nav-link active" data-page="home">Home</button>
-<button class="nav-link" data-page="technology">Technology</button>
-<button class="nav-link" data-page="markets">Markets</button>
-<button class="nav-link" data-page="advantage">Advantage</button>
-<button class="nav-link" data-page="contact">Contact</button>
-</nav>
-</div>
+  <div class="container header-inner">
+    <nav class="nav">
+      <button class="nav-link active" data-page="home">Home</button>
+      <button class="nav-link" data-page="technology">Technology</button>
+      <button class="nav-link" data-page="markets">Markets</button>
+      <button class="nav-link" data-page="advantage">Advantage</button>
+      <button class="nav-link" data-page="contact">Contact</button>
+    </nav>
+  </div>
 </header>
 
 <main>
 
 <section id="home" class="page active">
-<div class="container">
+  <div class="container">
+    <div class="brand-title">NeuroSonix</div>
+    <div class="pill">Brain Inspired AI for Intelligent Audio</div>
 
-<div class="brand-title">NeuroSonix</div>
-<div class="pill">Brain Inspired AI for Intelligent Audio</div>
+    <h1>Enabling devices to focus on the sound that matters.</h1>
 
-<h1>Enabling devices to focus on the sound that matters.</h1>
+    <p class="lead">
+      NeuroSonix develops brain-inspired AI. Our patent-protected core technology allows machines to focus on a specific sound within complex, noisy environments. Our NeuroAI algorithm enables hardware manufacturers to isolate and track voices in real time, unlocking a new generation of intelligent audio across hearing devices, consumer electronics, and AI platforms.
+    </p>
 
-<p class="lead">
-NeuroSonix develops brain-inspired AI. Our patent-protected core technology allows machines to focus on a specific sound within complex, noisy environments. Our NeuroAI algorithm enables hardware manufacturers to isolate and track voices in real time, unlocking a new generation of intelligent audio across hearing devices, consumer electronics, and AI platforms.
-</p>
+    <div class="button-row">
+      <button class="btn btn-primary nav-link" data-page="contact">Contact</button>
+      <button class="btn btn-secondary nav-link" data-page="technology">Explore Technology</button>
+    </div>
+  </div>
+</section>
 
-<div class="button-row">
-<button class="btn btn-primary nav-link" data-page="contact">Contact</button>
-<button class="btn btn-secondary nav-link" data-page="technology">Explore Technology<
+<section id="technology" class="page">
+  <div class="container">
+    <h2>NeuroSonix enables machines to isolate and track a target speaker in real time.</h2>
+
+    <div class="grid-3">
+      <div class="card">
+        <h3>Two Microphones</h3>
+        <p>Operates with only two microphones.</p>
+      </div>
+
+      <div class="card">
+        <h3>Spatial Audio</h3>
+        <p>Preserves spatial audio cues.</p>
+      </div>
+
+      <div class="card">
+        <h3>Real-Time</h3>
+        <p>Runs on DSP hardware.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="markets" class="page">
+  <div class="container">
+    <h2>Commercial applications across high-value audio categories</h2>
+
+    <div class="grid-2">
+      <div class="card">
+        <ul>
+          <li>Hearing Devices</li>
+          <li>Consumer Audio</li>
+          <li>ASR Platforms</li>
+          <li>Surveillance</li>
+          <li>AI / Chip Platforms</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <p>NeuroSonix enables sound selection across complex acoustic environments.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="advantage" class="page">
+  <div class="container">
+    <h2>Key Differentiators</h2>
+
+    <div class="grid-3">
+      <div class="card">
+        <h3>Structural Cost Advantage</h3>
+        <p>Performance without additional microphones.</p>
+      </div>
+
+      <div class="card">
+        <h3>Proprietary AI</h3>
+        <p>Patent-protected architecture.</p>
+      </div>
+
+      <div class="card">
+        <h3>Edge Optimized</h3>
+        <p>Low-power DSP deployment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="page">
+  <div class="container">
+    <h2>Contact</h2>
+    <p class="lead">info@neurosonix.ai</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-brand">NEUROSONIX</div>
+    <div class="footer-copy">© 2026 NeuroSonix</div>
+  </div>
+</footer>
+
+<script>
+const links = document.querySelectorAll('.nav-link');
+const pages = document.querySelectorAll('.page');
+
+links.forEach(link => {
+  link.addEventListener('click', () => {
+    pages.forEach(page => page.classList.remove('active'));
+    links.forEach(item => item.classList.remove('active'));
+
+    document.getElementById(link.dataset.page).classList.add('active');
+    link.classList.add('active');
+
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  });
+});
+</script>
+
+</body>
+</html>
