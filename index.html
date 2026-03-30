@@ -186,9 +186,10 @@ li{
 
 .grid-3{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:repeat(3, minmax(0, 1fr));
   gap:24px;
   margin-top:42px;
+  align-items:stretch;
 }
 
 .grid-2{
@@ -203,6 +204,9 @@ li{
   border:1px solid var(--border);
   border-radius:28px;
   padding:28px;
+  height:100%;
+  display:flex;
+  flex-direction:column;
 }
 
 ul{
@@ -293,7 +297,7 @@ li+li{
     <div class="grid-3">
       <div class="card">
         <h3>Two Microphones</h3>
-        <p>Operates with only two microphones,reducing the needforlarger and more complex microphone arrays.</p>
+        <p>Operates with only two microphones, reducing the need for larger and more complex microphone arrays.</p>
       </div>
 
       <div class="card">
@@ -303,23 +307,21 @@ li+li{
 
       <div class="card">
         <h3>Real-Time</h3>
-        <p>Enables real-time applications on DSP hardward without cloud dependency or repeated model retraining.</p>
+        <p>Enables real-time applications on DSP hardware without cloud dependency or repeated model retraining.</p>
       </div>
-    </div>
-  
-   <div class="grid-3">
+
       <div class="card">
-        <h3>Structural cost advantage</h3>
+        <h3>Structural Cost Advantage</h3>
         <p>Performance without additional microphone count reduces hardware complexity and bill of materials.</p>
       </div>
 
       <div class="card">
-        <h3>Proprietary AI architecture</h3>
+        <h3>Proprietary AI Architecture</h3>
         <p>Patent-protected, brain-inspired algorithm for sound segregation and selective listening.</p>
       </div>
 
       <div class="card">
-        <h3>Edge optimized efficiency</h3>
+        <h3>Edge Optimized Efficiency</h3>
         <p>Designed for low-power DSP deployment without cloud dependency or model retraining.</p>
       </div>
     </div>
