@@ -20,6 +20,18 @@
 
 *{box-sizing:border-box}
 
+  .email-link{
+  color:var(--text);
+  text-decoration:none;
+  transition:color .2s ease;
+  border-bottom:1px solid transparent;
+}
+
+.email-link:hover{
+  color:var(--accent);
+  border-bottom:1px solid var(--accent);
+}
+
 html,body{
   margin:0;
   padding:0;
@@ -331,7 +343,11 @@ li+li{
 <section id="contact" class="page">
   <div class="container">
     <h2>Contact</h2>
-    <p class="lead">info@neurosonix.ai</p>
+<p class="lead">
+  <a href="mailto:info@neurosonix.ai" class="email-link">
+    info@neurosonix.ai
+  </a>
+</p>
   </div>
 </section>
 
