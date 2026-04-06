@@ -274,11 +274,11 @@ li+li{
 
 <header class="site-header">
   <div class="container header-inner">
-    <nav class="nav">
-      <button class="nav-link active" data-page="home">Home</button>
-      <button class="nav-link" data-page="technology">Technology</button>
-      <button class="nav-link" data-page="contact">Contact</button>
-    </nav>
+  <nav class="nav">
+    <a href="/" class="nav-link active">Home</a>
+    <a href="/technology/" class="nav-link">Technology</a>
+    <a href="/contact/" class="nav-link">Contact</a>
+  </nav>
   </div>
 </header>
 
@@ -296,8 +296,8 @@ li+li{
     </p>
 
     <div class="button-row">
-      <button class="btn btn-primary nav-link" data-page="contact">Contact</button>
-      <button class="btn btn-secondary nav-link" data-page="technology">Explore Technology</button>
+      <a class="btn btn-primary" href="/contact/">Contact</a>
+      <a class="btn btn-secondary" href="/technology/">Explore Technology</a>
     </div>
   </div>
 </section>
@@ -359,23 +359,6 @@ li+li{
     <div class="footer-copy">© 2026 NeuroSonix</div>
   </div>
 </footer>
-
-<script>
-const links = document.querySelectorAll('.nav-link');
-const pages = document.querySelectorAll('.page');
-
-links.forEach(link => {
-  link.addEventListener('click', () => {
-    pages.forEach(page => page.classList.remove('active'));
-    links.forEach(item => item.classList.remove('active'));
-
-    document.getElementById(link.dataset.page).classList.add('active');
-    link.classList.add('active');
-
-    window.scrollTo({ top: 0, behavior: 'auto' });
-  });
-});
-</script>
 
 </body>
 </html>
