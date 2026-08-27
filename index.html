@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="/faviconround.ico">
-  
+
 <style>
 :root{
   --bg:#000000;
@@ -13,26 +13,19 @@
   --soft:rgba(255,255,255,.46);
   --border:rgba(255,255,255,.10);
   --panel:rgba(255,255,255,.04);
-  --accent:#def962;
-  --accent-bg:rgba(222,249,98,.12);
-  --accent-border:rgba(222,249,98,.35);
+
+  /* Gold accent */
+  --accent:#d4af37;
+  --accent-bg:rgba(212,175,55,.10);
+  --accent-border:rgba(212,175,55,.38);
 }
 
-*{box-sizing:border-box}
-
-.email-link{
-  color:var(--text);
-  text-decoration:none;
-  transition:color .2s ease;
-  border-bottom:1px solid transparent;
+*{
+  box-sizing:border-box;
 }
 
-.email-link:hover{
-  color:var(--accent);
-  border-bottom:1px solid var(--accent);
-}
-
-html,body{
+html,
+body{
   margin:0;
   padding:0;
   background:var(--bg);
@@ -48,6 +41,11 @@ html,body{
   margin:0 auto;
   padding:0 28px;
 }
+
+
+/* =========================
+   HEADER
+   ========================= */
 
 .site-header{
   border-bottom:1px solid var(--border);
@@ -75,12 +73,18 @@ html,body{
   font-weight:400;
   letter-spacing:.01em;
   padding:0;
+  transition:color .2s ease;
 }
 
 .nav a:hover,
 .nav a.active{
   color:var(--text);
 }
+
+
+/* =========================
+   MAIN CONTENT
+   ========================= */
 
 .page{
   padding:84px 0 88px;
@@ -133,6 +137,11 @@ p{
   color:var(--muted);
 }
 
+
+/* =========================
+   BUTTONS
+   ========================= */
+
 .button-row{
   display:flex;
   gap:14px;
@@ -148,83 +157,132 @@ p{
   cursor:pointer;
   font-size:14px;
   font-weight:500;
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    background-color .2s ease,
+    border-color .2s ease,
+    color .2s ease;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
 }
 
 .btn-primary{
   background:#fff;
   color:#000;
+  border:1px solid #fff;
+}
+
+.btn-primary:hover{
+  background:#f4f4f4;
+  box-shadow:0 8px 24px rgba(255,255,255,.13);
 }
 
 .btn-secondary{
   border:1px solid rgba(255,255,255,.18);
   color:#fff;
+  background:transparent;
 }
+
+.btn-secondary:hover{
+  background:rgba(255,255,255,.07);
+  border-color:rgba(255,255,255,.35);
+  box-shadow:0 8px 24px rgba(0,0,0,.35);
+}
+
+
+/* =========================
+   EMAIL LINKS
+   ========================= */
+
+.email-link{
+  color:var(--text);
+  text-decoration:none;
+  transition:color .2s ease;
+  border-bottom:1px solid transparent;
+}
+
+.email-link:hover{
+  color:var(--accent);
+  border-bottom:1px solid var(--accent);
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
 
 .footer{
   border-top:1px solid var(--border);
-  margin-top:72px;
-  padding:56px 0;
-  text-align:center;
+  padding:38px 0;
+}
+
+.footer-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+}
+
+.footer-left{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
 }
 
 .footer-brand{
   font-size:12px;
   letter-spacing:.24em;
+  color:#fff;
 }
 
 .footer-copy{
-  margin-top:10px;
   font-size:12px;
   color:var(--soft);
 }
 
-  .site-footer {
-  margin-top: 80px;
-  padding: 28px 24px;
-  border-top: 1px solid #e5e7eb;
-  background: #ffffff;
+.footer-links{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:12px;
 }
 
-.footer-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
+.footer-links a{
+  color:var(--soft);
+  text-decoration:none;
+  transition:color .2s ease;
 }
 
-.site-footer p {
-  margin: 0;
-  color: #6b7280;
-  font-size: 14px;
+.footer-links a:hover{
+  color:#fff;
 }
 
-.footer-links {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 14px;
+.footer-links span{
+  color:rgba(255,255,255,.25);
 }
 
-.footer-links a {
-  color: #4b5563;
-  text-decoration: none;
-}
 
-.footer-links a:hover {
-  text-decoration: underline;
-}
+/* =========================
+   MOBILE
+   ========================= */
 
-.footer-links span {
-  color: #9ca3af;
-}
+@media (max-width:600px){
 
-@media (max-width: 600px) {
-  .footer-inner {
-    flex-direction: column;
-    align-items: flex-start;
+  .container{
+    padding:0 22px;
+  }
+
+  .page{
+    padding:64px 0 70px;
+  }
+
+  .footer-inner{
+    flex-direction:column;
+    align-items:flex-start;
   }
 }
 </style>
@@ -244,38 +302,56 @@ p{
 
 <section class="page">
   <div class="container">
-    <div class="brand-title">NeuroSonix</div>
-    <div class="pill">Brain Inspired AI for Intelligent Audio</div>
 
-    <h1>Enabling devices to focus on the sound that matters.</h1>
+    <div class="brand-title">NeuroSonix</div>
+
+    <div class="pill">
+      Brain Inspired AI for Intelligent Audio
+    </div>
+
+    <h1>
+      Enabling devices to focus on the sound that matters.
+    </h1>
 
     <p class="lead">
-      NeuroSonix develops brain-inspired AI. Our patent-protected core technology allows machines to focus on a specific sound within complex, noisy environments. Our NeuroAI algorithm enables hardware manufacturers to isolate and track voices in real time, unlocking a new generation of intelligent audio across hearing devices, consumer electronics, and AI platforms.
+      NeuroSonix develops brain-inspired AI. Our patent-protected core technology
+      allows machines to focus on a specific sound within complex, noisy environments.
+      Our NeuroAI algorithm enables hardware manufacturers to isolate and track voices
+      in real time, unlocking a new generation of intelligent audio across hearing
+      devices, consumer electronics, and AI platforms.
     </p>
 
     <div class="button-row">
-      <a class="btn btn-primary" href="/contact/">Contact</a>
-      <a class="btn btn-secondary" href="/technology/">Explore Technology</a>
+      <a class="btn btn-primary" href="/contact/">
+        Contact
+      </a>
+
+      <a class="btn btn-secondary" href="/technology/">
+        Explore Technology
+      </a>
     </div>
+
   </div>
 </section>
 
 <footer class="footer">
-  <div class="container">
-    <div class="footer-brand">NEUROSONIX</div>
-    <div class="footer-copy">© 2026 NeuroSonix</div>
-  </div>
-</footer>
-<footer class="site-footer">
-  <div class="footer-inner">
-    <p>© 2026 NeuroSonix. All rights reserved.</p>
+  <div class="container footer-inner">
+
+    <div class="footer-left">
+      <div class="footer-brand">NEUROSONIX</div>
+      <div class="footer-copy">
+        © 2026 NeuroSonix. All rights reserved.
+      </div>
+    </div>
 
     <nav class="footer-links" aria-label="Legal">
       <a href="/privacy/">Privacy Policy</a>
       <span>·</span>
       <a href="/terms/">Terms of Use</a>
     </nav>
+
   </div>
 </footer>
+
 </body>
 </html>
